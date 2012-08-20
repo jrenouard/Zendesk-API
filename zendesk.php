@@ -50,7 +50,6 @@ class zendesk
 		curl_setopt($ch, CURLOPT_FOLLOWLOCATION, true);
 		curl_setopt($ch, CURLOPT_MAXREDIRS, 10 );
 		curl_setopt($ch, CURLOPT_URL, $this->base.$url);
-		echo $this->base.$url;
 		curl_setopt($ch, CURLOPT_USERPWD, $this->user."/token:".$this->api_key);
 		switch($action){
 			case "POST":
