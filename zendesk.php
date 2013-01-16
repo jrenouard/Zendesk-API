@@ -11,19 +11,21 @@
   */
 class zendesk
 {
-	private $api_key	= "YOURAPIKEY";
-	private $user		= "YOURUSER";
-	private $base		= 'https://YOURSUBDOMAIN.zendesk.com/api/v2';
-	private $suffix		= '.json';
-	
 	/**
 	 * API Constructor. If set to test automatically, will return an Exception if the ping API call fails
 	 *
-	 * @param string $key API Key
-	 * @param bool $test=true Whether to test API connectivity on creation
+	 * @param string $apiKey API Key.
+	 * @param string $user Username on Zendesk.
+	 * @param string $subDomain Your subdomain on zendesk, without https:// nor trailling dot.
+	 * @param string $suffix .json by default.
+	 * @param bool $test=true Whether to test API connectivity on creation.
 	 */
-	public function __construct($test = false)
+	public function __construct($apiKey, $user, $subDomain, $suffix = '.json', $test = false)
 	{
+		$this->api_key = $apiKey;
+		$this->user    = $user;
+		$this->base    = 'https://' . $subDomain . '.zendesk.com/api/v2';
+		$this->suffix  = $suffix;
 		if ($test === true && !$this->test())
 		{
 			throw new Exception('Cannot connect or authentice with the Zendesk API');
@@ -33,7 +35,7 @@ class zendesk
 	/**
 	 * Perform an API call.
 	 *
-	 * @param string $url='/tickets' Endpoint URL. Will automatically add '.json' if necessary (both '/tickets.json' and '/tickets' are valid)
+	 * @param string $url='/tickets' Endpoint URL. Will automatically add the suffix you set if necessary (both '/tickets.json' and '/tickets' are valid)
 	 * @param array $json=array() An associative array of parameters
 	 * @param string $action Action to perform POST/GET/PUT
 	 *
