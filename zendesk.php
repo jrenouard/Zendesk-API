@@ -41,7 +41,7 @@ class zendesk
 	 */
 	public function call($url, $json, $action)
 	{
-		if (substr_compare($url, $this->suffix, -strlen($this->suffix), strlen($this->suffix)) !== 0)
+		if (substr_count($url, $this->suffix) == 0)
 		{
 			$url .= '.json';
 		}
