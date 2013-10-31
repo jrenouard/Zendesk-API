@@ -5,7 +5,7 @@ Basic Zendesk API PHP implementation
 
 use as follow 
 
-	$zendesk = new zendesk($apiKey, $user, $subDomain, $suffix = '.json', $test = false);
+	$zendesk = new Zendesk($apiKey, $user, $subDomain, $suffix = '.json', $test = false);
 	$arr 	 = array("z_subject"=>"Help, my printer is on fire!",
 		   "z_description"=>"help I need some help",
 		   "z_recipient"=>"RECIPIENTEMAIL@EMAIL.EMAIL",
