@@ -9,7 +9,7 @@
   * @version 1.0
   *
   */
-class zendesk
+class Zendesk
 {
 	/**
 	 * API Constructor. If set to test automatically, will return an Exception if the ping API call fails
